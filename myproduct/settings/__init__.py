@@ -4,4 +4,4 @@ try:
 except:
     pass
 
-from .allauth import *
+#from .allauth import *
