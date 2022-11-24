@@ -80,35 +80,35 @@ WSGI_APPLICATION = 'myproduct.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
-
-with open(f'{PARENT_DIR}/auth/name_db.cnf') as f:
-    name_db = f.read().strip()
-
-with open(f'{PARENT_DIR}/auth/pswd_db.cnf') as f:
-    pswd_db = f.read().strip()
-
-with open(f'{PARENT_DIR}/auth/user_db.cnf') as f:
-    user_db = f.read().strip()
-
-with open(f'{PARENT_DIR}/auth/host_db.cnf') as f:
-    host_db = f.read().strip()
-
 DATABASES = {
-     'default': {
-         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-         'NAME': name_db,
-         'USER': user_db,
-         'PASSWORD': pswd_db,
-         'HOST': host_db,
-         'PORT': '5432',
-     }
- }
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
+
+# with open(f'{PARENT_DIR}/auth/name_db.cnf') as f:
+#     name_db = f.read().strip()
+
+# with open(f'{PARENT_DIR}/auth/pswd_db.cnf') as f:
+#     pswd_db = f.read().strip()
+
+# with open(f'{PARENT_DIR}/auth/user_db.cnf') as f:
+#     user_db = f.read().strip()
+
+# with open(f'{PARENT_DIR}/auth/host_db.cnf') as f:
+#     host_db = f.read().strip()
+
+# DATABASES = {
+#      'default': {
+#          'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#          'NAME': name_db,
+#          'USER': user_db,
+#          'PASSWORD': pswd_db,
+#          'HOST': host_db,
+#          'PORT': '5432',
+#      }
+#  }
 
 
 # Password validation
