@@ -4,4 +4,7 @@ try:
 except:
     pass
 
-#from .allauth import *
+try:
+    from .allauth import *
+except:
+    pass
