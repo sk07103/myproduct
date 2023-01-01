@@ -28,12 +28,6 @@ with open(f'{PARENT_DIR}/auth/secret_key.cnf') as f:
 
 SECRET_KEY = secret_key
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = []
-
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -79,13 +73,6 @@ WSGI_APPLICATION = 'myproduct.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
 
 with open(f'{PARENT_DIR}/auth/name_db.cnf') as f:
     name_db = f.read().strip()
