@@ -3,6 +3,7 @@ from pathlib import Path
 # local_settingsから読み込み(SECRET_KEY, DEBUG, ALLOWED_HOSTS, DATABASES, AUTH_PASSWORD_VALIDATORS, PASSWORD_HASHERS)
 from .local_settings import *
 
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -73,3 +74,5 @@ MEDIA_URL = "/media/"
 
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+AUTH_USER_MODEL = 'accounts.User'
