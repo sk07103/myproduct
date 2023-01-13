@@ -1,3 +1,7 @@
-from django.shortcuts import render
+from django.views.generic import CreateView
+from .forms import CreateUserForm
 
-# Create your views here.
+class CreateUserView(CreateView):
+    template_name = 'accounts/user_create.html'
+    form_class = CreateUserForm
+
