@@ -2,7 +2,7 @@ from django import forms
 from .models import User
 from django.contrib.auth.password_validation import validate_password
 
-class CreateUserForm(forms.ModelForm):
+class RegistUserForm(forms.ModelForm):
 
     class Meta:
         model = User        

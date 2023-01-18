@@ -1,7 +1,7 @@
 from django.views.generic import CreateView
-from .forms import CreateUserForm
+from .forms import RegistUserForm
 
 class CreateUserView(CreateView):
-    template_name = 'accounts/user_create.html'
-    form_class = CreateUserForm
+    template_name = 'accounts/user_regist.html'
+    form_class = RegistUserForm
 

@@ -5,9 +5,7 @@ from django.urls import reverse_lazy
 
 class UserManager(BaseUserManager):
 
-
-    def create_user(self, username, email, password=None):
-        
+    def create_user(self, username, email, password=None):        
         if not email:
             raise ValueError('Emailを入力してください')
 
@@ -17,7 +15,6 @@ class UserManager(BaseUserManager):
         return user
 
     def create_superuser(self, username, email, password=None):
-
         user = self.create_user(
             email=self.normalize_email(email),
             username=username,
@@ -31,7 +28,6 @@ class UserManager(BaseUserManager):
 
 
 class User(AbstractBaseUser, PermissionsMixin):
-
 
     username = models.CharField(max_length=50)
     email = models.EmailField(unique=True)
@@ -47,15 +43,11 @@ class User(AbstractBaseUser, PermissionsMixin):
     REQUIRED_FIELDS = ['username']
 
     # ユーザ作成が成功した際のリダイレクト先を指定
-    # def get_absolute_url(self):
-
-    #     return reverse_lazy('todo_app:top')
-
+    def get_absolute_url(self):
+        return reverse_lazy('favoritecosme:top')
 
     class Meta:
-
         db_table = 'user'
 
     def __str__(self):
-
         return self.username
