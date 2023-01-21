@@ -1,10 +1,17 @@
 {% extends 'base.html' %}
+{% block additional_head %}
+  {% load static %}
+  <link href="{% static 'css/accounts/user_regist.css' %}" rel="stylesheet" type="text/css">
+{% endblock%}
 {% block body %}
-  <h1>ユーザー登録</h1>
-  <form method="POST" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="登録">
-  </form>
+  <h2>ユーザー登録</h2>
+  <div class="container">
+   <form method="POST" enctype="multipart/form-data">
+     {% csrf_token %}
+     <table>
+     {{ form.as_table }}
+     </table>
+     <input type="submit" class="btn btn-secondary" value="登録">
+   </form>
+  </div>
 {% endblock %}
-

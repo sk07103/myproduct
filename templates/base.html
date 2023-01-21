@@ -10,9 +10,10 @@
     <link href="{% static 'css/common.css' %}" rel="stylesheet" type="text/css" media="all">
     
     <title>{% block title %}favoritecosme{% endblock %}</title>
+    {% block additional_head %}{% endblock %}
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
       <a class="navbar-brand" href="{% url 'favoritecosme:test' %}">TEST</a>
     </nav>
     {% block body %}{% endblock %}
