@@ -2,3 +2,6 @@ body {
   font-family: "游ゴシック", "YuGothic", "メイリオ", meiryo, sans-serif;
 }
 
+.main-body {
+  margin: 30px;
+}
