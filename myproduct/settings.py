@@ -8,13 +8,13 @@ from .local_settings import *
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Tepmpateフォルダへの絶対パスを定義
-TEMPLATE_DIR = BASE_DIR / "templates"
+TEMPLATE_DIR = BASE_DIR / 'templates'
 
 # staticフォルダへの絶対パスを定義
-STATIC_DIR = BASE_DIR / "static"
+STATIC_DIR = BASE_DIR / 'static'
 
 # メディアフォルダへの絶対パスを定義
-MEDIA_DIR = BASE_DIR / "media"
+MEDIA_DIR = BASE_DIR / 'media'
 
 # Application definition
 INSTALLED_APPS = [
@@ -71,7 +71,7 @@ STATICFILES_DIRS = [STATIC_DIR,]
 STATIC_ROOT = BASE_DIR / "static_collect"
 
 # MEDIA_DIR
-MEDIA_URL = "/media/"
+MEDIA_URL = '/media/'
 MEDIA_ROOT = MEDIA_DIR
 
 # Default primary key field type

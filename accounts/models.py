@@ -31,7 +31,7 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     username = models.CharField(max_length=50)
     email = models.EmailField(unique=True)
-    picture = models.FileField(upload_to="accounts/", blank=True, null=True)
+    picture = models.FileField(upload_to='accounts/', blank=True, null=True)
     regist_date = models.DateField(auto_now=True)
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
