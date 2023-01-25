@@ -1,3 +1,5 @@
 from django.contrib import admin
+from .models import User
 
-# Register your models here.
+# ファイルアップロードを管理画面で扱えるようにする。
+admin.site.register(User)
