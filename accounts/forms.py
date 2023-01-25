@@ -1,20 +1,25 @@
+from datetime import date
 from django import forms
-from .models import User
 from django.contrib.auth.password_validation import validate_password
+
+from .models import User
 
 class RegistUserForm(forms.ModelForm):
 
     class Meta:
         model = User        
-        fields = ['username', 'email', 'picture', 'password']
+        fields = ['username', 'email', 'date_of_birth', 'picture', 'password']
         labels = {
             'username': 'ユーザー名',
             'email': 'メールアドレス',
+            'date_of_birth': '生年月日',
             'picture': '画像',
             'password': 'パスワード',
         }
         widgets = {
-            'password': forms.PasswordInput()
+            'password': forms.PasswordInput(),
+            'date_of_birth': forms.DateInput(attrs={'placeholder':date.today()}),
+
         }
         requireds = {
             'picture': False

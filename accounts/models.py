@@ -5,7 +5,7 @@ from django.urls import reverse_lazy
 
 class UserManager(BaseUserManager):
 
-    def create_user(self, username, email, password=None):        
+    def create_user(self, username, email, password=None):
         if not email:
             raise ValueError('Emailを入力してください')
 
@@ -31,6 +31,9 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     username = models.CharField(max_length=50)
     email = models.EmailField(unique=True)
+    date_of_birth = models.DateField()
+    # 性別
+    # 肌タイプ
     picture = models.FileField(upload_to='accounts/', blank=True, null=True)
     regist_date = models.DateField(auto_now=True)
     is_active = models.BooleanField(default=True)
@@ -39,7 +42,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     objects = UserManager()
 
     # ユーザーのユニークなキーを記述
-    USERNAME_FIELD = 'email'    
+    USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['username']
 
     # ユーザ作成が成功した際のリダイレクト先を指定
