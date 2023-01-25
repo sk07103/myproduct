@@ -32,8 +32,16 @@ class User(AbstractBaseUser, PermissionsMixin):
     username = models.CharField(max_length=50)
     email = models.EmailField(unique=True)
     date_of_birth = models.DateField()
-    # 性別
-    # 肌タイプ
+
+    SKIN_TYPE_CHOICES = [
+        (0,'乾燥肌'),
+        (1,'普通肌'),
+        (2,'脂性肌'),
+        (3,'混合肌'),
+        (4,'わからない')
+        ]
+    skin_type = models.IntegerField(choices=SKIN_TYPE_CHOICES)
+
     picture = models.FileField(upload_to='accounts/', blank=True, null=True)
     regist_date = models.DateField(auto_now=True)
     is_active = models.BooleanField(default=True)

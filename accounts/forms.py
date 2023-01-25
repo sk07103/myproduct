@@ -5,25 +5,28 @@ from django.contrib.auth.password_validation import validate_password
 from .models import User
 
 class RegistUserForm(forms.ModelForm):
-
+    
+    skin_type = forms.ChoiceField(label='ご自身の肌タイプ', choices=User.SKIN_TYPE_CHOICES, widget=forms.RadioSelect())
+    
     class Meta:
-        model = User        
-        fields = ['username', 'email', 'date_of_birth', 'picture', 'password']
+        model = User
+        fields = ['username', 'email', 'date_of_birth', 'skin_type', 'picture', 'password']
         labels = {
             'username': 'ユーザー名',
             'email': 'メールアドレス',
             'date_of_birth': '生年月日',
-            'picture': '画像',
+            'picture': 'プロフィール画像',
             'password': 'パスワード',
-        }
-        widgets = {
-            'password': forms.PasswordInput(),
-            'date_of_birth': forms.DateInput(attrs={'placeholder':date.today()}),
+            }
 
-        }
+        widgets = {
+            'date_of_birth': forms.DateInput(attrs={'placeholder':date.today()}),
+            'password': forms.PasswordInput(),
+            }
+
         requireds = {
-            'picture': False
-        }
+            'picture': False,
+            }
 
     def save(self, commit=False):
       user = super().save(commit=False)
