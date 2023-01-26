@@ -1,8 +1,17 @@
 {% extends 'base.html' %}
+{% block additional_head %}
+  {% load static %}
+  <link href="{% static 'css/accounts/create_user.css' %}" rel="stylesheet" type="text/css">
+{% endblock%}
 {% block body %}
-<form method="POST">
-   {% csrf_token %}
-   {{ form.as_table }}
-   <input type="submit" value="ログイン">
-</form>
+  <h2>ログイン</h2>
+  <div class="container">
+    <form method="POST">
+      {% csrf_token %}
+      <table>
+        {{ form.as_p }}
+      </table>
+      <input type="submit" value="ログイン">
+    </form>
+  </div>
 {% endblock %}
