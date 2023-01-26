@@ -21,6 +21,6 @@ class LoginUserView(LoginView):
         return super().form_valid(form)
 
 
-class UserLogoutView(LogoutView):
+class LogoutUserView(LogoutView):
 
     pass
