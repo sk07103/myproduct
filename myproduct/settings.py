@@ -7,14 +7,6 @@ from .local_settings import *
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# Tepmpateフォルダへの絶対パスを定義
-TEMPLATE_DIR = BASE_DIR / 'templates'
-
-# staticフォルダへの絶対パスを定義
-STATIC_DIR = BASE_DIR / 'static'
-
-# メディアフォルダへの絶対パスを定義
-MEDIA_DIR = BASE_DIR / 'media'
 
 # Application definition
 INSTALLED_APPS = [
@@ -41,6 +33,9 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'myproduct.urls'
 
+
+TEMPLATE_DIR = BASE_DIR / 'templates'
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -65,16 +60,23 @@ TIME_ZONE = 'Asia/Tokyo'
 USE_I18N = True
 USE_TZ = True
 
-# Static files (CSS, JavaScript, Images)
+# Login settings
+LOGIN_URL = '/accounts/login_user'
+LOGIN_REDIRECT_URL = '/favoritecosme/top'
+LOGOUT_REDIRECT_URL = '/accounts/login_user'
+
+# Static settings (CSS, JavaScript, Images)
 STATIC_URL = '/static/'
+STATIC_DIR = BASE_DIR / 'static'
 STATICFILES_DIRS = [STATIC_DIR,]
 STATIC_ROOT = BASE_DIR / "static_collect"
 
-# MEDIA_DIR
+# Media settings
 MEDIA_URL = '/media/'
-MEDIA_ROOT = MEDIA_DIR
+MEDIA_ROOT = BASE_DIR / 'media'
 
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
 
 AUTH_USER_MODEL = 'accounts.User'
