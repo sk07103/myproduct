@@ -3,15 +3,15 @@ from django.views.generic import CreateView
 
 from .forms import RegistUserForm, LoginUserForm
 
-class CreateUserView(CreateView):
+class RegistUserView(CreateView):
 
-    template_name = 'accounts/user_regist.html'
+    template_name = 'accounts/regist_user.html'
     form_class = RegistUserForm
 
 
 class LoginUserView(LoginView):
 
-    template_name = 'accounts/user_login.html'
+    template_name = 'accounts/login_user.html'
     authentication_form = LoginUserForm
 
     def form_valid(self, form):
