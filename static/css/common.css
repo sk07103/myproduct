@@ -5,3 +5,9 @@ body {
 .main-body {
   margin: 30px;
 }
+
+.btn {
+  padding: 14px 18px;
+  border-width: 2px;
+  border-radius: 0;
+}
