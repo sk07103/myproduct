@@ -1,5 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600&display=swap');
+
+:root {
+  --primary: #0d6efd;
+  --dark: #21252f;
+  --body: #888;
+}
+
 body {
-  font-family: "游ゴシック", "YuGothic", "メイリオ", meiryo, sans-serif;
+  font-family: 'Noto Serif JP', serif;
+  line-height: 1.7;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--dark);
+  font-weight: 700;
+}
+
+a {
+  color: var(--dark);
+  text-decoration: none;
+}
+
+.navbar .nav-link {
+  color: #fff !important;
+  font-size: 14px;
+  font-weight: 700;
+  padding-top: 16px;
 }
 
 .main-body {
