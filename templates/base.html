@@ -24,7 +24,7 @@
   <nav class="navbar navbar-expand-lg navbar-light bg-dark py-3">
     <div class="container">
       <a class="navbar-brand" href="{% url 'favoritecosme:top' %}">
-        <h2 class="text-white pt-1">favoritecosme</h2>
+        <h2 class="text-white pt-1">favoriteCosme</h2>
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -33,17 +33,35 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
           {% if not user.is_authenticated %}
-            <li class="nav-item"><a class="nav-link" href="{% url 'favoritecosme:top' %}">TOP</a></li>
-            <button class="btn btn-primary ms-2">ログイン</button>
+          <li class="nav-item"><a class="nav-link" href="{% url 'favoritecosme:top' %}">TOP</a></li>
+          <button class="btn btn-primary ms-2">ログイン</button>
           {% else %}
-            <li class="nav-item"><a class="nav-link" href="{% url 'favoritecosme:top' %}">TOP</a></li>
-            <button class="btn btn-primary ms-2">ログアウト</button>
-            <button class="btn btn-primary ms-2">ユーザー詳細</button>
+          <li class="nav-item"><a class="nav-link" href="{% url 'favoritecosme:top' %}">TOP</a></li>
+          <button class="btn btn-primary ms-2">ログアウト</button>
+          <button class="btn btn-primary ms-2">ユーザー詳細</button>
           {% endif %}
         </ul>
       </div>
     </div>
   </nav>
+
+  <!-- hero section -->
+  <div class="hero vh-100 d-flex align-items-center" id="home">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-7 mx-auto text-center">
+          <h1 class="display-4 text-white">bootstrap5 Page</h1>
+          <p class="text-white my-3">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nulla quas id consequatur eos placeat recusandae
+            ratione quo! Itaque blanditiis magni velit optio ratione ipsum, deserunt odit eum culpa quidem mollitia?
+          </p>
+          <a href="#" class="btn btn-primary me-2">Go Page</a>
+          <a href="#" class="btn btn-outline-light">Contact</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div class="main-body">
     {% block body %}{% endblock %}
   </div>
