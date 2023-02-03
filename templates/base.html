@@ -33,12 +33,12 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
           {% if not user.is_authenticated %}
-          <li class="nav-item"><a class="nav-link" href="{% url 'favoritecosme:top' %}">TOP</a></li>
-          <button class="btn btn-primary ms-2">ログイン</button>
+            <li class="nav-item"><a class="nav-link" href="{% url 'favoritecosme:top' %}">TOP</a></li>
+            <button class="btn btn-primary ms-2">ログイン</button>
           {% else %}
-          <li class="nav-item"><a class="nav-link" href="{% url 'favoritecosme:top' %}">TOP</a></li>
-          <button class="btn btn-primary ms-2">ログアウト</button>
-          <button class="btn btn-primary ms-2">ユーザー詳細</button>
+            <li class="nav-item"><a class="nav-link" href="{% url 'favoritecosme:top' %}">TOP</a></li>
+            <button class="btn btn-primary ms-2">ログアウト</button>
+            <button class="btn btn-primary ms-2">ユーザー詳細</button>
           {% endif %}
         </ul>
       </div>
@@ -50,7 +50,7 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-7 mx-auto text-center">
-          <h1 class="display-4 text-white">bootstrap5 Page</h1>
+          <h1 class="display-4 text-white">FavoriteCosme</h1>
           <p class="text-white my-3">
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nulla quas id consequatur eos placeat recusandae
             ratione quo! Itaque blanditiis magni velit optio ratione ipsum, deserunt odit eum culpa quidem mollitia?
