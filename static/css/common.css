@@ -48,7 +48,6 @@ a {
   background-image: url("../img/favoritecosme/2545189_l.jpg");
   background-position: center;
   background-size: cover;
-  background-attachment: fixed;
   position: relative;
   z-index: 2;
 }
