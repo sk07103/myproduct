@@ -1,24 +1,62 @@
 {% extends 'base.html' %}
 {% block additional_head %}
-  {% load static %}
-  <link href="{% static 'css/favoritecosme/top.css' %}" rel="stylesheet" type="text/css" media="all">
+{% load static %}
+<link href="{% static 'css/favoritecosme/top.css' %}" rel="stylesheet" type="text/css" media="all">
 {% endblock %}
 {% block title %}FavoriteCosme_Top{% endblock title %}
 {% block body %}
-  <!-- hero section -->
-  <div class="hero vh-100 d-flex align-items-center" id="home">
-    <div class="container">
-      <div class="row">
-        <div class="hero-text col-lg-7 mx-auto py-2 text-center">
-          <h1 class="display-4 text-light">FavoriteCosme</h1>
-          <p class="text-light my-3">
-            ファンデーションやリップなどのメイクアップコスメ、化粧水や乳液などのスキンケアコスメ、
-            「Favorite Cosme」で使用したコスメの使用感を記録・管理してお気に入りのコスメを見つけましょう。
+<!-- hero section -->
+<div class="hero vh-100 d-flex align-items-center mb-5" id="home">
+  <div class="container">
+    <div class="row">
+      <div class="hero-text col-lg-7 mx-auto py-2 text-center">
+        <h1 class="display-4 text-light">Favorite Cosme</h1>
+        <p class="text-light my-3">
+          ファンデーションやリップなどのメイクアップコスメ、化粧水や乳液などのスキンケアコスメ、
+          「Favorite Cosme」で使用したコスメの使用感を記録・管理してお気に入りのコスメを見つけましょう。
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- service section -->
+<section>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 mx-auto text-center">
+        <h2>Favorite Cosmeとは？</h2>
+        <div class="col-md-12 mx-auto mt-5 text-center">
+          <h3>コスメの使用感や使用していた時期などを記録</h3>
+          <p>
+            コスメは季節や肌の調子などによって使用感が変わってきます。
+            そのため、様々なものを試しても、結局どれがよかったかわからなくなって、
+            お気に入りをなかなか見つけられないことがあります。
+            「Favorite Cosme」を使えば、使用したコスメの感想を記録して手軽に管理できるので、
+            お気に入りのコスメを見つけやすくしてくれます。
           </p>
-          <a href="#" class="btn btn-primary me-2">Go Page</a>
-          <a href="#" class="btn btn-outline-light">Contact</a>
+        </div>
+        <div class="col-md-12 mx-auto mt-5 text-center">
+          <h3>メイクアップコスメの組み合わせをレシピとして登録</h3>
+          <p>
+            「リップなくなってきてたから同じの買っておこう」と思って店頭に行ったけど、
+            「いつも使ってるのどれだっけ？」となったことありませんか？
+            化粧品はパッケージや商品名が似ているものが多く、
+            普段使っているものであっても、わからなくなることがあります。
+            Favoriteコスメを使えば、ファンデーションやアイシャドウなどのカテゴリーごとにコスメを選択して、
+            その組み合わせをレシピとして登録できるので、商品名がわからなくなるということがなくなります。
+          </p>
+        </div>
+        <div class="col-md-12 mx-auto mt-5 text-center">
+          <h3>気になるアイテムを登録</h3>
+          <p>
+            「試してみたい」と思ったコスメを気になるアイテムとして記録して管理することができます。
+            気になったポイントや、そのアイテムを使用しているメイク動画のURLを記載するなどして情報を整理できます。
+            気になるアイテムを整理して、お気に入りのコスメを見つけましょう。
+          </p>
         </div>
       </div>
     </div>
   </div>
+</section>
 {% endblock %}

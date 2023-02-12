@@ -24,7 +24,7 @@
   <nav class="navbar navbar-expand-lg navbar-light bg-dark py-3">
     <div class="container">
       <a class="navbar-brand" href="{% url 'favoritecosme:top' %}">
-        <h2 class="text-white pt-1">favoriteCosme</h2>
+        <h2 class="text-white pt-1">Favorite Cosme</h2>
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -33,12 +33,12 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
           {% if not user.is_authenticated %}
-            <li class="nav-item"><a class="nav-link" href="{% url 'favoritecosme:top' %}">TOP</a></li>
-            <button class="btn btn-primary ms-2">ログイン</button>
+          <li class="nav-item"><a class="nav-link" href="{% url 'favoritecosme:top' %}">TOP</a></li>
+          <button class="btn btn-primary ms-2">ログイン</button>
           {% else %}
-            <li class="nav-item"><a class="nav-link" href="{% url 'favoritecosme:top' %}">TOP</a></li>
-            <button class="btn btn-primary ms-2">ログアウト</button>
-            <button class="btn btn-primary ms-2">ユーザー詳細</button>
+          <li class="nav-item"><a class="nav-link" href="{% url 'favoritecosme:top' %}">TOP</a></li>
+          <button class="btn btn-primary ms-2">ログアウト</button>
+          <button class="btn btn-primary ms-2">ユーザー詳細</button>
           {% endif %}
         </ul>
       </div>
