@@ -34,11 +34,11 @@
         <ul class="navbar-nav ms-auto">
           {% if not user.is_authenticated %}
           <li class="nav-item"><a class="nav-link" href="{% url 'favoritecosme:top' %}">TOP</a></li>
-          <button class="btn btn-primary ms-2">ログイン</button>
+          <button class="btn btn-secondary ms-2">Login</button>
           {% else %}
           <li class="nav-item"><a class="nav-link" href="{% url 'favoritecosme:top' %}">TOP</a></li>
-          <button class="btn btn-primary ms-2">ログアウト</button>
-          <button class="btn btn-primary ms-2">ユーザー詳細</button>
+          <button class="btn btn-secondary ms-2">Logout</button>
+          <button class="btn btn-secondary ms-2">ユーザー詳細</button>
           {% endif %}
         </ul>
       </div>
