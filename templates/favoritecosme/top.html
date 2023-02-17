@@ -17,7 +17,7 @@
         </p>
         {% if not user.is_authenticated %}
         <button class="btn btn-light">ユーザー登録</button>
-        <button class="btn btn-light ms-2">Login</button>
+        <button class="btn btn-light ms-2">ログイン</button>
         {% endif %}
       </div>
     </div>
@@ -81,4 +81,15 @@
     </div>
   </div>
 </section>
+
+<div class="container">
+  <div class="row my-5">
+    <div class="col-lg-6 mx-auto text-center">
+      {% if not user.is_authenticated %}
+      <button class="btn-bottom">Favorite Cosmeをはじめる</button>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
 {% endblock %}
