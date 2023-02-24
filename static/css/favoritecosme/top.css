@@ -21,10 +21,12 @@
   background-color: rgba(131, 112, 139, 0.5);
 }
 
-.feature-1 {
-  background-image: url(/static/img/favoritecosme/4222297_s.jpg);
-  background-position: center;
-  background-size: cover;
+.feature {
   height: 50vh;
-  width: 50%;
+  width: 100%;
+}
+
+.feature-2 {
+  height: 50vh;
+  width: 100%;
 }
