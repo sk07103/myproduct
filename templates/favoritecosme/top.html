@@ -16,8 +16,8 @@
           「Favorite Cosme」で使用したコスメの使用感を記録・管理してお気に入りのコスメを見つけましょう。
         </p>
         {% if not user.is_authenticated %}
-        <button class="btn btn-light">ユーザー登録</button>
-        <button class="btn btn-light ms-2">ログイン</button>
+        <a href="{% url 'accounts:regist_user' %}" class="btn btn-light">ユーザー登録</a>
+        <a href="{% url 'accounts:login_user' %}" class="btn btn-light ms-2">ログイン</a>
         {% endif %}
       </div>
     </div>
