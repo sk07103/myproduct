@@ -63,7 +63,7 @@ USE_TZ = True
 # Login settings
 LOGIN_URL = '/accounts/login_user'
 LOGIN_REDIRECT_URL = '/favoritecosme/top'
-LOGOUT_REDIRECT_URL = '/accounts/login_user'
+LOGOUT_REDIRECT_URL = '/favoritecosme/top'
 
 # Static settings (CSS, JavaScript, Images)
 STATIC_URL = '/static/'

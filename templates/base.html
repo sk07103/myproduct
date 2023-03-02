@@ -37,7 +37,7 @@
           <a href="{% url 'accounts:login_user' %}" class="btn btn-light ms-2">ログイン</a>
           {% else %}
           <li class="nav-item"><a class="nav-link" href="{% url 'favoritecosme:top' %}">TOP</a></li>
-          <a href="{% url 'accounts:login_out' %}" class="btn btn-light ms-2">ログアウト</a>
+          <a href="{% url 'accounts:logout_user' %}" class="btn btn-light ms-2">ログアウト</a>
           <button class="btn btn-secondary ms-2">ユーザー詳細</button>
           {% endif %}
         </ul>
