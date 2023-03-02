@@ -36,7 +36,7 @@
           <a href="{% url 'accounts:login_user' %}" class="btn btn-light ms-2">ログイン</a>
           {% else %}
           <a href="{% url 'accounts:logout_user' %}" class="btn btn-light ms-2">ログアウト</a>
-          <button class="btn btn-secondary ms-2">ユーザー詳細</button>
+          <a href="{% url 'accounts:detail_user' pk=user.pk %}" class="btn btn-light ms-2">ユーザー詳細</a>
           {% endif %}
         </ul>
       </div>

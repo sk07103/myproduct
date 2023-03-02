@@ -1,7 +1,9 @@
 from django.contrib.auth.views import LoginView, LogoutView
-from django.views.generic import CreateView
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic import CreateView, DetailView
 
 from .forms import RegistUserForm, LoginUserForm
+from .models import User
 
 class RegistUserView(CreateView):
 
@@ -24,3 +26,10 @@ class LoginUserView(LoginView):
 class LogoutUserView(LogoutView):
 
     pass
+
+
+class DetailUserView(LoginRequiredMixin, DetailView):
+
+    template_name = 'accounts/detail_user.html'
+    model = User
+
