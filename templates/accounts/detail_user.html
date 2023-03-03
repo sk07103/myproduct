@@ -8,7 +8,7 @@
         <tbody>
           <tr><th>ユーザー名</th><td>{{ object.username }}</td></tr>
           <tr><th>メールアドレス</th><td>{{ object.email }}</td></tr>
-          <tr><th>生年月日</th><td>{{ object.date_of_birth }}</td></tr>
+          <tr><th>生年月日</th><td>{{ object.date_of_birth | date:"Y-m-d" }}</td></tr>
           <tr><th>ご自身の肌タイプ</th><td>{{ object.skin_type }}</td></tr>
         </tbody>
       </table>
