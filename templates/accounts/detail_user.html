@@ -12,6 +12,7 @@
           <tr><th>ご自身の肌タイプ</th><td>{{ object.skin_type }}</td></tr>
         </tbody>
       </table>
+      <a href="{% url 'accounts:update_user' pk=user.pk %}" class="btn btn-dark ms-2">ユーザー設定を変更</a>
     </div>
   </div>
 </div>

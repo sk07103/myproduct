@@ -43,3 +43,25 @@ class LoginUserForm(AuthenticationForm):
     password = forms.CharField(label='パスワード', widget=forms.PasswordInput())
     remember = forms.BooleanField(label='ログイン状態を保持する', required=False)
 
+
+class UpdateUserForm(forms.ModelForm):
+
+    skin_type = forms.ChoiceField(label='ご自身の肌タイプ', choices=User.SKIN_TYPE_CHOICES, widget=forms.RadioSelect())
+
+    class Meta:
+        model = User
+        fields = ['username', 'email', 'date_of_birth', 'skin_type', 'picture']
+        labels = {
+            'username': 'ユーザー名',
+            'email': 'メールアドレス',
+            'date_of_birth': '生年月日',
+            'picture': 'プロフィール画像',
+            }
+
+        widgets = {
+            'date_of_birth': forms.DateInput(attrs={'placeholder':date.today()}),
+            }
+
+        requireds = {
+            'picture': False,
+            }

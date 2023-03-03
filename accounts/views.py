@@ -1,8 +1,9 @@
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.views.generic import CreateView, DetailView
+from django.urls import reverse_lazy
+from django.views.generic import CreateView, DetailView, UpdateView
 
-from .forms import RegistUserForm, LoginUserForm
+from .forms import RegistUserForm, LoginUserForm, UpdateUserForm
 from .models import User
 
 class RegistUserView(CreateView):
@@ -33,3 +34,12 @@ class DetailUserView(LoginRequiredMixin, DetailView):
     template_name = 'accounts/detail_user.html'
     model = User
 
+
+class UpdateUserView(LoginRequiredMixin, UpdateView):
+
+    template_name = 'accounts/update_user.html'
+    model = User
+    form_class = UpdateUserForm
+
+    def get_success_url(self):
+        return reverse_lazy('accounts:detail_user', kwargs={'pk':self.kwargs['pk']})
