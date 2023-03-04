@@ -34,12 +34,12 @@ class User(AbstractBaseUser, PermissionsMixin):
     date_of_birth = models.DateField()
 
     SKIN_TYPE_CHOICES = [
-        ('乾燥肌','乾燥肌'),
-        ('普通肌','普通肌'),
-        ('脂性肌','脂性肌'),
-        ('混合肌','混合肌'),
-        ('わからない','わからない')
-        ]
+        ('乾燥肌', '乾燥肌'),
+        ('普通肌', '普通肌'),
+        ('脂性肌', '脂性肌'),
+        ('混合肌', '混合肌'),
+        ('わからない', 'わからない')
+    ]
     skin_type = models.CharField(max_length=5, choices=SKIN_TYPE_CHOICES)
 
     picture = models.FileField(upload_to='accounts/', blank=True, null=True)
