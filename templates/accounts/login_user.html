@@ -1,8 +1,12 @@
 {% extends 'base.html' %}
+
 {% block additional_head %}
 {% load static %}
 <link href="{% static 'css/accounts/login_user.css' %}" rel="stylesheet" type="text/css">
 {% endblock%}
+
+{% block title %}ログイン|FavoriteCosme{% endblock title %}
+
 {% block body %}
 <div class="container">
   <div class="row">

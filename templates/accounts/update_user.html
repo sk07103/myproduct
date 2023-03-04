@@ -1,9 +1,11 @@
 {% extends 'base.html' %}
 
 {% block additional_head %}
-  {% load static %}
-  <link href="{% static 'css/accounts/update_user.css' %}" rel="stylesheet" type="text/css">
+{% load static %}
+<link href="{% static 'css/accounts/update_user.css' %}" rel="stylesheet" type="text/css">
 {% endblock %}
+
+{% block title %}ユーザー情報変更|FavoriteCosme{% endblock title %}
 
 {% block body %}
 <div class="container">
