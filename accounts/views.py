@@ -1,4 +1,4 @@
-from django.contrib.auth.views import LoginView, LogoutView
+from django.contrib.auth.views import LoginView, LogoutView, PasswordChangeView, PasswordChangeDoneView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, DetailView, UpdateView
@@ -43,3 +43,14 @@ class UpdateUserView(LoginRequiredMixin, UpdateView):
 
     def get_success_url(self):
         return reverse_lazy('accounts:detail_user', kwargs={'pk':self.kwargs['pk']})
+    
+
+class ChangePasswordView(LoginRequiredMixin, PasswordChangeView):
+
+    template_name = 'accounts/change_password.html'
+    success_url = reverse_lazy('accounts:change_password_done')
+
+
+class ChangePasswordDoneView(LoginRequiredMixin, PasswordChangeDoneView):
+
+    template_name = 'accounts/change_password_done.html'
