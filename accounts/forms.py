@@ -1,4 +1,4 @@
-from datetime import date
+import datetime
 from django import forms
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.password_validation import validate_password
@@ -8,6 +8,7 @@ from .models import User
 class RegistUserForm(forms.ModelForm):
 
     skin_type = forms.ChoiceField(label='ご自身の肌タイプ', choices=User.SKIN_TYPE_CHOICES, widget=forms.RadioSelect())
+    date_of_birth = forms.CharField(label='生年月日', max_length=8, min_length=8, help_text='数字8桁で入力（例:1998年1月31日の場合→19950131）')
 
     class Meta:
         model = User
@@ -15,13 +16,11 @@ class RegistUserForm(forms.ModelForm):
         labels = {
             'username': 'ユーザー名',
             'email': 'メールアドレス',
-            'date_of_birth': '生年月日',
             'picture': 'プロフィール画像',
             'password': 'パスワード',
             }
 
         widgets = {
-            'date_of_birth': forms.DateInput(attrs={'placeholder':date.today()}),
             'password': forms.PasswordInput(),
             }
 
@@ -59,7 +58,7 @@ class UpdateUserForm(forms.ModelForm):
             }
 
         widgets = {
-            'date_of_birth': forms.DateInput(attrs={'placeholder':date.today()}),
+            'date_of_birth': forms.DateInput(attrs={'placeholder':datetime.date.today()}),
             }
 
         requireds = {
