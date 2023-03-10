@@ -8,7 +8,6 @@ from .models import User
 class RegistUserForm(forms.ModelForm):
 
     skin_type = forms.ChoiceField(label='ご自身の肌タイプ', choices=User.SKIN_TYPE_CHOICES, widget=forms.RadioSelect())
-    date_of_birth = forms.CharField(label='生年月日', max_length=8, min_length=8, help_text='数字8桁で入力（例:1998年1月31日の場合→19950131）')
 
     class Meta:
         model = User
@@ -16,17 +15,14 @@ class RegistUserForm(forms.ModelForm):
         labels = {
             'username': 'ユーザー名',
             'email': 'メールアドレス',
+            'date_of_birth': '生年月日',
             'picture': 'プロフィール画像',
             'password': 'パスワード',
-            }
+        }
 
-        widgets = {
-            'password': forms.PasswordInput(),
-            }
-
-        requireds = {
-            'picture': False,
-            }
+        widgets = {'password': forms.PasswordInput()}
+        help_texts = {'date_of_birth': '数字8桁のハイフン(-)区切りで入力してください（例:1998年1月31日の場合→1998-01-31）'}
+        requireds = {'picture': False,}
 
     def save(self, commit=False):
         user = super().save(commit=False)
@@ -55,12 +51,7 @@ class UpdateUserForm(forms.ModelForm):
             'email': 'メールアドレス',
             'date_of_birth': '生年月日',
             'picture': 'プロフィール画像',
-            }
+        }
 
-        widgets = {
-            'date_of_birth': forms.DateInput(attrs={'placeholder':datetime.date.today()}),
-            }
-
-        requireds = {
-            'picture': False,
-            }
+        help_texts = {'date_of_birth': '数字8桁のハイフン(-)区切りで入力してください（例:1998年1月31日の場合→1998-01-31）'}
+        requireds = {'picture': False,}
