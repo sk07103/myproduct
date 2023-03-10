@@ -2,3 +2,7 @@
   width: 25vw;
 }
 
+table {
+    border-collapse: separate;
+    border-spacing: 20px;
+}
