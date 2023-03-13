@@ -21,7 +21,7 @@
 
 <body>
   <!-- navbar section -->
-  <nav class="navbar navbar-expand-lg navbar-light bg-dark py-3">
+  <nav class="navbar navbar-expand-lg navbar-light bg-dark py-2">
     <div class="container">
       <a class="navbar-brand" href="{% url 'favoritecosme:top' %}">
         <h2 class="text-white pt-1">Favorite Cosme</h2>
@@ -35,6 +35,15 @@
           {% if not user.is_authenticated %}
           <a href="{% url 'accounts:login_user' %}" class="btn btn-light ms-2">ログイン</a>
           {% else %}
+	  <li class="nav-item">
+            <a class="nav-link" href="#">Myアイテム</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">レシピ</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">気になるアイテム</a>
+          </li>
           <a href="{% url 'accounts:logout_user' %}" class="btn btn-light ms-2">ログアウト</a>
           <a href="{% url 'accounts:detail_user' pk=user.pk %}" class="btn btn-light ms-2">ユーザー詳細</a>
           {% endif %}
