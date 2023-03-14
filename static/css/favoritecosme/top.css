@@ -21,6 +21,27 @@
   background-color: rgba(131, 112, 139, 0.5);
 }
 
+.hero-btn {
+  width: 150px;
+  padding: 5px;
+  box-sizing: border-box;
+  font-weight: 500;
+  font-size: 14px;
+  text-align: center;
+  color: #fff;
+  background-color: rgba(131, 112, 139, 0.5);
+  border: 2px solid #fff;
+  border-radius: 0;
+  cursor: pointer;
+  padding-top: 1;
+  transition: all 0.4s ease;
+}
+
+.hero-btn:hover {
+  color: rgba(131, 112, 139, 0.5);
+  background-color: #fff;
+}
+
 .feature {
   height: 50vh;
   width: 100%;
@@ -31,24 +52,24 @@
   width: 100%;
 }
 
-.btn-bottom {
+.bottom-btn {
   width: 300px;
   padding: 10px;
   box-sizing: border-box;
   text-align: center;
-  color: #fff;
-  background-color: rgba(131, 112, 139, 0.5);
+  color: rgba(131, 112, 139, 0.5);
+  background-color: #fff;
   border: 2px solid rgba(131, 112, 139, 0.5);
   border-width: 2px;
   border-radius: 0;
   font-size: 18px;
-  font-weight: 700;
+  font-weight: 900;
   cursor: pointer;
   padding-top: 1;
   transition: all 0.4s ease;
 }
 
-.btn-bottom:hover {
-  color: rgba(131, 112, 139, 0.5);
-  background-color: #fff;
+.bottom-btn:hover {
+  color: #fff;
+  background-color: rgba(131, 112, 139, 0.5);
 }
