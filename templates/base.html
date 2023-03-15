@@ -44,8 +44,10 @@
           <li class="nav-item">
             <a class="nav-link" href="#">気になるアイテム</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'accounts:detail_user' pk=user.pk %}">ユーザー詳細</a>
+          </li>
           <a href="{% url 'accounts:logout_user' %}" class="btn btn-light ms-2">ログアウト</a>
-          <a href="{% url 'accounts:detail_user' pk=user.pk %}" class="btn btn-light ms-2">ユーザー詳細</a>
           {% endif %}
         </ul>
       </div>
