@@ -42,7 +42,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     ]
     skin_type = models.CharField(max_length=5, choices=SKIN_TYPE_CHOICES)
 
-    picture = models.FileField(upload_to='accounts/', blank=True, null=True)
+    picture = models.FileField(upload_to='accounts/', default='accounts/default_icon.png', blank=True, null=True)
     regist_date = models.DateField(auto_now=True)
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
