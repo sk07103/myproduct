@@ -2,6 +2,7 @@ import logging
 
 from django.contrib.auth.views import LoginView, LogoutView, PasswordChangeView, PasswordChangeDoneView
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.http import Http404
 from django.urls import reverse_lazy
 from django.utils import timezone
 from django.views.generic import CreateView, DetailView, UpdateView
@@ -10,7 +11,7 @@ from .forms import RegistUserForm, LoginUserForm, UpdateUserForm
 from .models import User
 
 
-logger = logging.getLogger("file")
+logger = logging.getLogger('file')
 
 
 class RegistUserView(CreateView):
@@ -42,7 +43,13 @@ class DetailUserView(LoginRequiredMixin, DetailView):
     model = User
 
     def get_context_data(self, **kwargs):
-        logger.info("logging test!!")
+        # requestされたurlのidとログイン中ユーザーのuser_idが一致していることをチェック
+        url_id = int(self.request.path.split('/')[-1])
+        user_id = self.request.user.id
+        if url_id != user_id:
+            raise Http404('閲覧権限がありません')
+
+        return super().get_context_data(**kwargs)
 
 
 class UpdateUserView(LoginRequiredMixin, UpdateView):
@@ -55,6 +62,16 @@ class UpdateUserView(LoginRequiredMixin, UpdateView):
         return reverse_lazy('accounts:detail_user', kwargs={'pk':self.kwargs['pk']})
 
 
+    def get_context_data(self, **kwargs):
+        # requestされたurlのidとログイン中ユーザーのuser_idが一致していることをチェック
+        url_id = int(self.request.path.split('/')[-1])
+        user_id = self.request.user.id
+        if url_id != user_id:
+            raise Http404('閲覧権限がありません')
+
+        return super().get_context_data(**kwargs)
+
+
 class ChangePasswordView(LoginRequiredMixin, PasswordChangeView):
 
     template_name = 'accounts/change_password.html'
@@ -64,4 +81,6 @@ class ChangePasswordView(LoginRequiredMixin, PasswordChangeView):
 class ChangePasswordDoneView(LoginRequiredMixin, PasswordChangeDoneView):
 
     template_name = 'accounts/change_password_done.html'
+
+
 
