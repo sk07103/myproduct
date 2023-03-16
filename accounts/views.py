@@ -1,3 +1,5 @@
+import logging
+
 from django.contrib.auth.views import LoginView, LogoutView, PasswordChangeView, PasswordChangeDoneView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
@@ -6,6 +8,10 @@ from django.views.generic import CreateView, DetailView, UpdateView
 
 from .forms import RegistUserForm, LoginUserForm, UpdateUserForm
 from .models import User
+
+
+logger = logging.getLogger("file")
+
 
 class RegistUserView(CreateView):
 
@@ -35,6 +41,9 @@ class DetailUserView(LoginRequiredMixin, DetailView):
     template_name = 'accounts/detail_user.html'
     model = User
 
+    def get_context_data(self, **kwargs):
+        logger.info("logging test!!")
+
 
 class UpdateUserView(LoginRequiredMixin, UpdateView):
 
@@ -55,3 +64,4 @@ class ChangePasswordView(LoginRequiredMixin, PasswordChangeView):
 class ChangePasswordDoneView(LoginRequiredMixin, PasswordChangeDoneView):
 
     template_name = 'accounts/change_password_done.html'
+

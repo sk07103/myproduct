@@ -1,3 +1,5 @@
+import os
+import logging
 from pathlib import Path
 
 # local_settingsから読み込み(SECRET_KEY, DEBUG, ALLOWED_HOSTS, DATABASES, AUTH_PASSWORD_VALIDATORS, PASSWORD_HASHERS)
@@ -69,7 +71,7 @@ LOGOUT_REDIRECT_URL = '/favoritecosme/top'
 STATIC_URL = '/static/'
 STATIC_DIR = BASE_DIR / 'static'
 STATICFILES_DIRS = [STATIC_DIR,]
-STATIC_ROOT = BASE_DIR / "static_collect"
+STATIC_ROOT = BASE_DIR / 'static_collect'
 
 # Media settings
 MEDIA_URL = '/media/'
@@ -80,3 +82,37 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 AUTH_USER_MODEL = 'accounts.User'
+
+# Log settings
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "handlers": {
+        "file": {
+            "class": "logging.handlers.RotatingFileHandler",
+            "filename": os.path.join(BASE_DIR, 'logs/django.log'),
+            "formatter": "verbose",
+            "maxBytes": 1024 * 1024 * 1,
+            "backupCount": 5,
+        },
+    },
+    "formatters": {
+        "verbose": {
+            "format": "\t".join(
+                [
+                    "[%(levelname)s]",
+                    "%(asctime)s",
+                    "%(name)s.%(funcName)s:%(lineno)s",
+                    "%(message)s",
+                ]
+            )
+        },
+    },
+    "loggers": {
+        "file": {
+            "handlers": ["file"],
+            "level": os.getenv("DJANGO_LOG_LEVEL", "INFO"),
+            "propagate": True,
+        },
+    },
+}
