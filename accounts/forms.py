@@ -1,9 +1,12 @@
 import datetime
+import logging
 from django import forms
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.password_validation import validate_password
 
 from .models import User
+
+logger = logging.getLogger('file')
 
 class RegistUserForm(forms.ModelForm):
 
@@ -55,3 +58,12 @@ class UpdateUserForm(forms.ModelForm):
 
         help_texts = {'date_of_birth': '数字8桁のハイフン(-)区切りで入力してください（例:1998年1月31日の場合→1998-01-31）'}
         requireds = {'picture': False,}
+
+    # 設定されているプロフィール画像をクリアした場合はデフォルトの画像を自動で設定する
+    def save(self, commit=False):
+        user = super().save(commit=False)
+        if self.cleaned_data['picture'] is False:
+            user.picture = 'accounts/default_icon.png'
+        user.save()
+        return user
+
