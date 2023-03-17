@@ -47,7 +47,7 @@ class DetailUserView(LoginRequiredMixin, DetailView):
         url_id = int(self.request.path.split('/')[-1])
         user_id = self.request.user.id
         if url_id != user_id:
-            raise Http404('閲覧権限がありません')
+            raise Http404()
 
         return super().get_context_data(**kwargs)
 
@@ -67,7 +67,7 @@ class UpdateUserView(LoginRequiredMixin, UpdateView):
         url_id = int(self.request.path.split('/')[-1])
         user_id = self.request.user.id
         if url_id != user_id:
-            raise Http404('閲覧権限がありません')
+            raise Http404()
 
         return super().get_context_data(**kwargs)
 
