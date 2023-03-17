@@ -42,15 +42,13 @@ class DetailUserView(LoginRequiredMixin, DetailView):
     template_name = 'accounts/detail_user.html'
     model = User
 
+    # requestされたurlのidとログイン中ユーザーのuser_idが一致していることをチェック
     def get_context_data(self, **kwargs):
-        # requestされたurlのidとログイン中ユーザーのuser_idが一致していることをチェック
         url_id = int(self.request.path.split('/')[-1])
         user_id = self.request.user.id
         if url_id != user_id:
             raise Http404()
-
         return super().get_context_data(**kwargs)
-
 
 class UpdateUserView(LoginRequiredMixin, UpdateView):
 
@@ -61,14 +59,12 @@ class UpdateUserView(LoginRequiredMixin, UpdateView):
     def get_success_url(self):
         return reverse_lazy('accounts:detail_user', kwargs={'pk':self.kwargs['pk']})
 
-
+    # requestされたurlのidとログイン中ユーザーのuser_idが一致していることをチェック
     def get_context_data(self, **kwargs):
-        # requestされたurlのidとログイン中ユーザーのuser_idが一致していることをチェック
         url_id = int(self.request.path.split('/')[-1])
         user_id = self.request.user.id
         if url_id != user_id:
             raise Http404()
-
         return super().get_context_data(**kwargs)
 
 
