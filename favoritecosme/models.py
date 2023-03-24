@@ -9,9 +9,8 @@ class MyItems(models.Model):
     category = models.ForeignKey('categories', on_delete=models.PROTECT)
     brand = models.ForeignKey('brands', on_delete=models.PROTECT)
     price = models.IntegerField()
-    use_start_date = models.DateField()
-    rate = models.IntegerField()
     regist_date = models.DateField(auto_now=True)
+    tried = models.BooleanField(default=False)
     
     class Meta:
         db_table = 'my_items'
