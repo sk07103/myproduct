@@ -14,7 +14,6 @@ class MyItems(models.Model):
 
     class Meta:
         db_table = 'my_items'
-        #ordering = ['deadline']
 
     def __str__(self):
         return self.name
@@ -41,3 +40,22 @@ class Brands(models.Model):
     
     def __str__(self):
         return self.name
+    
+
+class Reviews(models.Model):
+
+    REVIEW_CHOICES = [
+        (5, '非常によい'),
+        (4, 'よい'),
+        (3, '普通'),
+        (2, 'よくない'),
+        (1, '非常によくない')
+    ]
+
+    review = models.IntegerField(choices=REVIEW_CHOICES)
+    comment = models.CharField(max_length=500, null=True, blank=True)
+    review_date = models.DateField(auto_now=True)
+    myitem = models.ForeignKey('my_items', on_delete=models.CASCADE)
+
+    class Meta:
+        db_table = 'reviews'
