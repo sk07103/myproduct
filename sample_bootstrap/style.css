@@ -211,3 +211,19 @@ form .form-control {
   border-radius: 0;
   background-color: rgba(0, 0, 0, 0.04);
 }
+
+
+/* footer section */
+.footer-top {
+  background-color: var(--dark);
+  padding: 90px;
+  padding-bottom: 90px;
+}
+
+.footer-top a {
+  color: var(--body);
+}
+
+.footer-top a:hover {
+  color: #fff;
+}
