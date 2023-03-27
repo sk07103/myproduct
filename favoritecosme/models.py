@@ -17,11 +17,11 @@ class MyItems(models.Model):
 
     def __str__(self):
         return self.name
-    
+
 
 class Categories(models.Model):
 
-    code = models.CharField(max_length=3, min_length=3)
+    code = models.CharField(max_length=3)
     name = models.CharField(max_length=100)
 
     class Meta:
@@ -37,10 +37,10 @@ class Brands(models.Model):
 
     class Meta:
         db_table = 'brands'
-    
+
     def __str__(self):
         return self.name
-    
+
 
 class Reviews(models.Model):
 
@@ -55,7 +55,7 @@ class Reviews(models.Model):
     review = models.IntegerField(choices=REVIEW_CHOICES)
     comment = models.CharField(max_length=500, null=True, blank=True)
     review_date = models.DateField(auto_now=True)
-    myitem = models.ForeignKey('my_items', on_delete=models.CASCADE)
+    myitem = models.ForeignKey('myitems', on_delete=models.CASCADE)
 
     class Meta:
         db_table = 'reviews'
