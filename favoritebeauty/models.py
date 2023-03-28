@@ -13,7 +13,7 @@ class MyItems(models.Model):
     tried = models.BooleanField(default=False)
 
     class Meta:
-        db_table = 'my_items'
+        db_table = 'myitems'
 
     def __str__(self):
         return self.name

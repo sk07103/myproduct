@@ -55,7 +55,7 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     # ユーザ作成が成功した際のリダイレクト先を指定
     def get_absolute_url(self):
-        return reverse_lazy('favoritecosme:top')
+        return reverse_lazy('favoritebeauty:top')
 
     class Meta:
         db_table = 'user'

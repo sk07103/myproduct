@@ -19,7 +19,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_cleanup.apps.CleanupConfig',
-    'favoritecosme',
+    'favoritebeauty',
     'accounts',
 ]
 
@@ -64,8 +64,8 @@ USE_TZ = True
 
 # Login settings
 LOGIN_URL = '/accounts/login_user'
-LOGIN_REDIRECT_URL = '/favoritecosme/top'
-LOGOUT_REDIRECT_URL = '/favoritecosme/top'
+LOGIN_REDIRECT_URL = '/favoritebeauty/top'
+LOGOUT_REDIRECT_URL = '/favoritebeauty/top'
 
 # Static settings (CSS, JavaScript, Images)
 STATIC_URL = '/static/'
