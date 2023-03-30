@@ -36,7 +36,7 @@
           <a href="{% url 'accounts:login_user' %}" class="btn btn-light ms-2">ログイン</a>
           {% else %}
 	  <li class="nav-item">
-            <a class="nav-link" href="#">Myアイテム</a>
+            <a class="nav-link" href="{% url 'favoritebeauty:regist_myitem' %}">アイテム登録</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">レシピ</a>

@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block additional_head %}
+{% load static %}
+<link href="{% static 'css/favoritebeauty/regist_myitem.css' %}" rel="stylesheet" type="text/css">
+{% endblock %}
+
+{% block title %}アイテム登録 | FavoriteBeauty{% endblock title %}
+
+{% block body %}
+<div class="container">
+  <div class="row">
+    <div class="col-lg-10 mx-auto my-4">
+      <h2>アイテム登録</h2>
+      <form class="mt-4 ms-5" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <table>
+          {{ form.as_table }}
+        </table>
+        <input type="submit" class="btn btn-secondary mt-3 ms-3" value="登録">
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}
