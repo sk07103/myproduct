@@ -1,3 +1,11 @@
+#id_category {
+  width: 25vw;
+}
+
+#id_brand, #id_name {
+  width: 40vw;
+}
+
 table {
     border-collapse: separate;
     border-spacing: 30px;
