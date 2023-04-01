@@ -204,7 +204,7 @@ INSERT INTO brands VALUES (203, 'ルナソル（LUNASOL）');
 INSERT INTO brands VALUES (204, 'ルルルン（LuLuLun）');
 INSERT INTO brands VALUES (205, 'レシピスト（recipist）');
 INSERT INTO brands VALUES (206, 'レッドビーエー（Red B.A）');
-INSERT INTO brands VALUES (207, 'レルボラリオ（L'’ERBOLARIO）');
+INSERT INTO brands VALUES (207, 'レルボラリオ（L''ERBOLARIO）');
 INSERT INTO brands VALUES (208, 'ローズラボ（ROSE LABO）');
 INSERT INTO brands VALUES (209, 'ローラ メルシエ（laura mercier）');
 INSERT INTO brands VALUES (210, 'ロクシタン（L''OCCITANE）');
