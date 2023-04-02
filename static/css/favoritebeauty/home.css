@@ -1,0 +1,9 @@
+.picture {
+  height: 50vh;
+  width: 100%;
+  object-fit: scale-down;
+}
+
+.btn {
+  width: 150px;
+}
