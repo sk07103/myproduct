@@ -30,7 +30,7 @@
             <td>{{ user.date_of_birth | date:"Y-m-d" }}</td>
           </tr>
           <tr>
-            <th>ご自身の肌タイプ</th>
+            <th>肌タイプ</th>
             <td>{{ user.skin_type }}</td>
           </tr>
         </tbody>
@@ -46,10 +46,8 @@
 <!-- item section -->
 <div class="container">
   <div class="row mt-5">
-    <div class="col-lg-12">
-      <div class="d-flex justify-content-end">
-        <a href="{% url 'favoritebeauty:regist_myitem' %}" class="btn btn-dark">アイテムを追加</a>
-      </div>
+    <div class="col-lg-12 mb-5">
+      <h2>お試し中アイテム</h2>
       <table class="table table-bordered mt-4" border="1">
         <thead>
           <tr align="center">
@@ -74,6 +72,9 @@
           {% endfor %}
         </tbody>
       </table>
+      <div class="d-flex justify-content-end">
+        <a href="{% url 'favoritebeauty:regist_myitem' %}" class="btn btn-dark">アイテムを追加</a>
+      </div>
     </div>
   </div>
 </div>
