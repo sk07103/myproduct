@@ -56,7 +56,7 @@
             <th>カテゴリー</th>
             <th>価格</th>
             <th>登録日</th>
-            <th>test</th>
+            <th>評価</th>
           </tr>
         </thead>
         <tbody>
@@ -67,7 +67,7 @@
             <td>{{item.category}}</td>
             <td>{{item.price}}</td>
             <td>{{item.regist_date | date:"Y-m-d" }}</td>
-            <td>{{item.user.skin_type}}</td>
+            <td>{{item.rating}}</td>
           </tr>
           {% endfor %}
         </tbody>
