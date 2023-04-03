@@ -54,7 +54,7 @@ class Reviews(models.Model):
     ]
 
     review = models.IntegerField(choices=REVIEW_CHOICES)
-    comment = models.CharField(max_length=500, null=True, blank=True)
+    comment = models.CharField(max_length=500, default='-')
     review_date = models.DateField(auto_now=True)
     myitem = models.ForeignKey('myitems', on_delete=models.CASCADE)
 
