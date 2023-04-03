@@ -21,7 +21,7 @@ class RegistMyitemView(LoginRequiredMixin, CreateView):
 
     template_name = 'favoritebeauty/regist_myitem.html'
     form_class = RegistMyitemForm
-    success_url = reverse_lazy('favoritebeauty:top')
+    success_url = reverse_lazy('favoritebeauty:home')
 
     # formから受け取ったデータにログインユーザーの情報を加えてDBに保存
     def form_valid(self, form):
