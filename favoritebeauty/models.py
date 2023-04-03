@@ -55,7 +55,7 @@ class Reviews(models.Model):
 
     review = models.IntegerField(choices=REVIEW_CHOICES)
     comment = models.CharField(max_length=500, default='-')
-    review_date = models.DateField(auto_now=True)
+    review_date = models.DateField()
     myitem = models.ForeignKey('myitems', on_delete=models.CASCADE)
 
     class Meta:

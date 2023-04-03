@@ -2,7 +2,7 @@ import datetime
 import logging
 from django import forms
 
-from .models import MyItems
+from .models import MyItems, Reviews
 
 logger = logging.getLogger('file')
 
@@ -19,3 +19,16 @@ class RegistMyitemForm(forms.ModelForm):
         }
 
 
+class ReviewMyitemForm(forms.ModelForm):
+
+    review = forms.ChoiceField(label='今日の調子はどうですか？', choices=Reviews.REVIEW_CHOICES, widget=forms.RadioSelect())
+
+    class Meta:
+        model = Reviews
+        fields = ['review_date', 'review', 'comment']
+        labels = {
+            'review_date': '日付',
+            'comment': 'コメント'
+        }
+
+        requireds = {'comment': False,}

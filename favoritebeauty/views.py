@@ -1,13 +1,13 @@
 import logging
 
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.urls import reverse_lazy
-from django.views.generic import CreateView, ListView
+from django.views.generic import CreateView, ListView, FormView
 from django.views.generic.base import TemplateView
 
-from .forms import RegistMyitemForm
-from .models import MyItems
+from .forms import RegistMyitemForm, ReviewMyitemForm
+from .models import MyItems, Reviews
 
 
 logger = logging.getLogger('file')
@@ -45,3 +45,20 @@ class HomeView(LoginRequiredMixin, ListView):
         queryset = super().get_queryset(**kwargs)
         queryset = queryset.filter(user=self.request.user)
         return queryset
+
+
+class ReviewMyitemView(LoginRequiredMixin, FormView):
+
+    template_name = 'favoritebeauty/review_myitem.html'
+    form_class = ReviewMyitemForm
+    success_url = reverse_lazy('favoritebeauty:home')
+    model = Reviews
+
+    def form_valid(self, form):
+        data = form.cleaned_data
+        myitem = get_object_or_404(MyItems, pk=self.kwargs['pk'])
+        data['myitem'] = myitem
+        obj = Reviews(**data)
+        obj.save()
+        return super().form_valid(form)
+
