@@ -56,9 +56,18 @@ class ReviewMyitemView(LoginRequiredMixin, FormView):
 
     def form_valid(self, form):
         data = form.cleaned_data
-        myitem = get_object_or_404(MyItems, pk=self.kwargs['pk'])
+        myitem_id = self.kwargs['pk']
+        
+        myitem = get_object_or_404(MyItems, pk=myitem_id)
         data['myitem'] = myitem
         obj = Reviews(**data)
         obj.save()
+
+        queryset = Reviews.objects.filter(myitem=myitem_id)
+        review_list = []
+        for review in queryset:
+            review_list.append(review.review)
+        logger.info(review_list)
+
         return super().form_valid(form)
 
