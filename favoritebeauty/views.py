@@ -56,18 +56,23 @@ class ReviewMyitemView(LoginRequiredMixin, FormView):
 
     def form_valid(self, form):
         data = form.cleaned_data
-        myitem_id = self.kwargs['pk']
-        
-        myitem = get_object_or_404(MyItems, pk=myitem_id)
-        data['myitem'] = myitem
-        obj = Reviews(**data)
-        obj.save()
+        myitem_id = self.kwargs['myitem_id']
 
+        # レビュー対象アイテムのオブジェクトを取得し、レビューのオブジェクトに紐付けて保存
+        myitem_obj = get_object_or_404(MyItems, pk=myitem_id)
+        data['myitem'] = myitem_obj
+        review_obj = Reviews(**data)
+        review_obj.save()
+
+        # 今回レビューを登録したアイテムに対するレビューを全件取得
         queryset = Reviews.objects.filter(myitem=myitem_id)
+
+        # 取得したレビューの平均値を算出し、アイテムのratingの値を更新し保存
         review_list = []
         for review in queryset:
             review_list.append(review.review)
-        logger.info(review_list)
+        review_ave = sum(review_list) / len(review_list)
+        myitem_obj.rating = review_ave
+        myitem_obj.save()
 
         return super().form_valid(form)
-

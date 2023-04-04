@@ -67,7 +67,7 @@
             <td>{{item.category}}</td>
             <td>{{item.price}}</td>
             <td>{{item.regist_date | date:"Y-m-d" }}</td>
-	    <td><a href="{% url 'favoritebeauty:review_myitem' pk=item.pk %}">{{item.rating}}</a></td>
+            <td><a href="{% url 'favoritebeauty:review_myitem' myitem_id=item.pk %}">{{item.rating}}</a></td>
           </tr>
           {% endfor %}
         </tbody>
