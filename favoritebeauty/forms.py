@@ -22,13 +22,12 @@ class RegistMyitemForm(forms.ModelForm):
 class ReviewMyitemForm(forms.ModelForm):
 
     review = forms.ChoiceField(label='今日の調子はどうですか？', choices=Reviews.REVIEW_CHOICES, widget=forms.RadioSelect())
+    comment = forms.CharField(label='コメント（任意）', widget=forms.Textarea(attrs={'rows': 5, 'cols': 60}), required=False)
 
     class Meta:
         model = Reviews
         fields = ['review_date', 'review', 'comment']
         labels = {
             'review_date': '日付',
-            'comment': 'コメント'
         }
 
-        requireds = {'comment': False,}
