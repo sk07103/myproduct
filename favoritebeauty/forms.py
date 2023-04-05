@@ -26,8 +26,5 @@ class ReviewMyitemForm(forms.ModelForm):
 
     class Meta:
         model = Reviews
-        fields = ['review_date', 'review', 'comment']
-        labels = {
-            'review_date': '日付',
-        }
+        fields = ['review', 'comment']
 
