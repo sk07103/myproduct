@@ -54,18 +54,6 @@ class ReviewMyitemView(LoginRequiredMixin, FormView):
     success_url = reverse_lazy('favoritebeauty:home')
     model = Reviews
 
-    # def get(self, request):
-    #     review_date = self.request.GET.get(review_date)
-    #     initial_dict = {'review_date': review_date}
-    #     form = ReviewMyitemForm(request.GET or None, initial=initial_dict)
-    #     return render(request, 'favoritebeauty/review_myitem.html', dict(form=form))
-
-    # def get_form_kwargs(self):
-    #     kwgs = super().get_form_kwargs()
-    #     review_date = self.request.GET.get(review_date)
-    #     logger.info(parameter)
-    #     return kwgs
-
     def form_valid(self, form):
         data = form.cleaned_data
         myitem_id = self.kwargs['myitem_id']
