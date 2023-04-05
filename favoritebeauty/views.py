@@ -78,3 +78,20 @@ class ReviewMyitemView(LoginRequiredMixin, FormView):
         myitem_obj.save()
 
         return super().form_valid(form)
+
+
+class ListReviewView(LoginRequiredMixin, ListView):
+
+    template_name = 'favoritebeauty/list_review.html'
+    model = Reviews
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data()
+        context['myitem'] = get_object_or_404(MyItems, pk=self.kwargs['myitem_id'])
+        return context
+
+    def get_queryset(self, **kwargs):
+        queryset = super().get_queryset(**kwargs)
+        myitem = self.kwargs['myitem_id']
+        queryset = queryset.filter(myitem=myitem)
+        return queryset

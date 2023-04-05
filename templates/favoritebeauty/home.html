@@ -57,6 +57,7 @@
             <th>価格</th>
             <th>登録日</th>
             <th>評価</th>
+            <th>テスト</th>
           </tr>
         </thead>
         <tbody>
@@ -67,7 +68,8 @@
             <td>{{item.category}}</td>
             <td>{{item.price}}</td>
             <td>{{item.regist_date | date:"Y-m-d" }}</td>
-            <td><a href="{% url 'favoritebeauty:review_myitem' myitem_id=item.pk review_date='2023-04-05' %}">{{item.rating|floatformat}}</a></td>
+            <td><a href="{% url 'favoritebeauty:list_review' myitem_id=item.pk %}">{{item.rating|floatformat}}</a></td>
+            <td><a href="{% url 'favoritebeauty:review_myitem' myitem_id=item.pk review_date='2023-04-05' %}">レビュー登録</a></td>
           </tr>
           {% endfor %}
         </tbody>
