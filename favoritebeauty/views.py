@@ -3,7 +3,7 @@ import logging
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse_lazy
-from django.views.generic import CreateView, ListView, FormView
+from django.views.generic import CreateView, ListView, FormView, UpdateView, DetailView
 from django.views.generic.base import TemplateView
 
 from .forms import RegistMyitemForm, ReviewMyitemForm
@@ -87,7 +87,8 @@ class ListReviewView(LoginRequiredMixin, ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data()
-        context['myitem'] = get_object_or_404(MyItems, pk=self.kwargs['myitem_id'])
+        context['myitem'] = get_object_or_404(
+            MyItems, pk=self.kwargs['myitem_id'])
         return context
 
     def get_queryset(self, **kwargs):
@@ -95,3 +96,19 @@ class ListReviewView(LoginRequiredMixin, ListView):
         myitem = self.kwargs['myitem_id']
         queryset = queryset.filter(myitem=myitem)
         return queryset
+
+
+class DetailReviewView(LoginRequiredMixin, UpdateView):
+    template_name = 'favoritebeauty/detail_review.html'
+    form_class = ReviewMyitemForm
+    model = Reviews
+
+    def get_success_url(self):
+        # return reverse_lazy('favoritebeauty:list_review', kwargs={'pk': self.kwargs['myitem_id']})
+        return reverse_lazy('favoritebeauty:top')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['review'] = get_object_or_404(
+            Reviews, pk=self.kwargs['pk'])
+        return context
