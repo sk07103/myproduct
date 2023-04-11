@@ -104,8 +104,8 @@ class DetailReviewView(LoginRequiredMixin, UpdateView):
     model = Reviews
 
     def get_success_url(self):
-        # return reverse_lazy('favoritebeauty:list_review', kwargs={'pk': self.kwargs['myitem_id']})
-        return reverse_lazy('favoritebeauty:top')
+        review = get_object_or_404(Reviews, pk=self.kwargs['pk'])
+        return reverse_lazy('favoritebeauty:list_review', kwargs={'myitem_id': review.myitem_id})
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
