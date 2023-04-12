@@ -13,7 +13,7 @@
     <div class="col-lg-10 mx-auto my-4">
       <h2>レビュー詳細</h2>
       <h3 class="mt-5">アイテム名：{{review.myitem}}</h3>
-      <h3>レビュー日：{{review.review_date | date:"Y-m-d"}}</h3>
+      <h3>レビュー日：{{review.review_date | date:"Y/m/d"}}</h3>
       <form class="mt-4 ms-5" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         <table>

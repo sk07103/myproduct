@@ -11,7 +11,9 @@
 <div class="container">
   <div class="row">
     <div class="col-lg-10 mx-auto my-4">
-      <h2>Myアイテムレビュー</h2>
+      <h2>肌の状態を記録しましょう</h2>
+      <h3 class="mt-5">アイテム名：{{myitem.name}}</h3>
+      <h3>レビュー日：{{review_date}}</h3>
       <form class="mt-4 ms-5" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         <table>

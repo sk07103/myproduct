@@ -27,7 +27,7 @@
           </tr>
           <tr>
             <th>生年月日</th>
-            <td>{{ user.date_of_birth | date:"Y-m-d" }}</td>
+            <td>{{ user.date_of_birth | date:"Y/m/d" }}</td>
           </tr>
           <tr>
             <th>肌タイプ</th>
@@ -67,9 +67,10 @@
             <td>{{item.brand}}</td>
             <td>{{item.category}}</td>
             <td>{{item.price}}</td>
-            <td>{{item.regist_date | date:"Y-m-d" }}</td>
+            <td>{{item.regist_date | date:"Y/m/d" }}</td>
             <td><a href="{% url 'favoritebeauty:list_review' myitem_id=item.pk %}">{{item.rating|floatformat}}</a></td>
-            <td><a href="{% url 'favoritebeauty:review_myitem' myitem_id=item.pk review_date='2023-04-05' %}">レビュー登録</a></td>
+            <td><a href="{% url 'favoritebeauty:review_myitem' myitem_id=item.pk review_date='2023-04-05' %}">レビュー登録</a>
+            </td>
           </tr>
           {% endfor %}
         </tbody>

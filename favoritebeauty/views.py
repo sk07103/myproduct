@@ -54,6 +54,16 @@ class ReviewMyitemView(LoginRequiredMixin, FormView):
     success_url = reverse_lazy('favoritebeauty:home')
     model = Reviews
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data()
+        logger.info(self.kwargs['myitem_id'])
+        logger.info(self.kwargs['review_date'])
+        context['myitem'] = get_object_or_404(
+            MyItems, pk=self.kwargs['myitem_id'])
+        review_date = self.kwargs['review_date']
+        context['review_date'] = review_date.replace("-", "/")
+        return context
+
     def form_valid(self, form):
         data = form.cleaned_data
         myitem_id = self.kwargs['myitem_id']
