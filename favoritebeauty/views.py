@@ -17,20 +17,6 @@ class TopView(TemplateView):
     template_name = 'favoritebeauty/top.html'
 
 
-class RegistMyitemView(LoginRequiredMixin, CreateView):
-
-    template_name = 'favoritebeauty/regist_myitem.html'
-    form_class = RegistMyitemForm
-    success_url = reverse_lazy('favoritebeauty:home')
-
-    # formから受け取ったデータにログインユーザーの情報を加えてDBに保存
-    def form_valid(self, form):
-        data = form.save(commit=False)
-        data.user = self.request.user
-        data.save()
-        return super().form_valid(form)
-
-
 class HomeView(LoginRequiredMixin, ListView):
 
     template_name = 'favoritebeauty/home.html'
@@ -43,8 +29,22 @@ class HomeView(LoginRequiredMixin, ListView):
 
     def get_queryset(self, **kwargs):
         queryset = super().get_queryset(**kwargs)
-        queryset = queryset.filter(user=self.request.user)
+        queryset = queryset.filter(user=self.request.user, tried=False)
         return queryset
+
+
+class RegistMyitemView(LoginRequiredMixin, CreateView):
+
+    template_name = 'favoritebeauty/regist_myitem.html'
+    form_class = RegistMyitemForm
+    success_url = reverse_lazy('favoritebeauty:home')
+
+    # formから受け取ったデータにログインユーザーの情報を加えてDBに保存
+    def form_valid(self, form):
+        data = form.save(commit=False)
+        data.user = self.request.user
+        data.save()
+        return super().form_valid(form)
 
 
 class ReviewMyitemView(LoginRequiredMixin, FormView):
@@ -88,6 +88,22 @@ class ReviewMyitemView(LoginRequiredMixin, FormView):
         myitem_obj.save()
 
         return super().form_valid(form)
+
+
+class ListTriedMyitemView(LoginRequiredMixin, ListView):
+
+    template_name = 'favoritebeauty/list_tried_myitem.html'
+    model = MyItems
+
+    def get_context_data(self):
+        context = super().get_context_data()
+        context['user'] = self.request.user
+        return context
+
+    def get_queryset(self, **kwargs):
+        queryset = super().get_queryset(**kwargs)
+        queryset = queryset.filter(user=self.request.user, tried=True)
+        return queryset
 
 
 class ListReviewView(LoginRequiredMixin, ListView):

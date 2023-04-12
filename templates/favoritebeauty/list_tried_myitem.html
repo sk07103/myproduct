@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block additional_head %}
+{% load static %}
+<link href="{% static 'css/favoritebeauty/list_tried_myitem.css' %}" rel="stylesheet" type="text/css" media="all">
+{% endblock %}
+
+{% block title %}お試し済みアイテム | FavoriteBeauty{% endblock title %}
+
+{% block body %}
+
+<div class="container">
+  <div class="row mt-5">
+    <div class="col-lg-12 mb-5">
+      <h2>お試し済みアイテム</h2>
+      <div class="d-flex justify-content-end">
+        <a href="{% url 'favoritebeauty:home' %}" class="btn btn-dark">ホームに戻る</a>
+      </div>
+      <table class="table table-bordered mt-4" border="1">
+        <thead class="table-secondary">
+          <tr align="center">
+            <th>アイテム</th>
+            <th>ブランド</th>
+            <th>カテゴリー</th>
+            <th>価格</th>
+            <th>登録日</th>
+            <th>評価</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for item in object_list %}
+          <tr align="center">
+            <td>{{item.name}}</td>
+            <td>{{item.brand}}</td>
+            <td>{{item.category}}</td>
+            <td>{{item.price}}</td>
+            <td>{{item.regist_date | date:"Y/m/d" }}</td>
+            <td><a href="{% url 'favoritebeauty:list_review' myitem_id=item.pk %}">{{item.rating|floatformat}}</a></td>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+{% endblock %}
