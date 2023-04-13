@@ -46,3 +46,12 @@ a {
   padding-top: 1;
 }
 
+.table-width-fix-large {
+  width: 30%;
+  table-layout: fixed;
+}
+
+.table-width-fix-small {
+  width: 15%;
+  table-layout: fixed;
+}

@@ -20,9 +20,9 @@
         <tbody>
           {% for review in object_list %}
           <tr align="center">
-            <td>{{review.review_date | date:"Y/m/d"}}</td>
-            <td>{{review.review}}</td>
-            <td><a href="{% url 'favoritebeauty:detail_review' pk=review.pk %}">{{review.comment|truncatechars:20}}</a>
+            <td class="table-width-fix-small">{{review.review_date | date:"Y/m/d"}}</td>
+            <td class="table-width-fix-small">{{review.review}}</td>
+            <td><a href="{% url 'favoritebeauty:detail_review' pk=review.pk %}">{{review.comment|truncatechars:70}}</a>
             </td>
           </tr>
           {% endfor %}

@@ -19,7 +19,7 @@
       <table class="table table-bordered mt-4" border="1">
         <thead class="table-secondary">
           <tr align="center">
-            <th>アイテム</th>
+            <th>アイテム名</th>
             <th>ブランド</th>
             <th>カテゴリー</th>
             <th>価格</th>
@@ -30,9 +30,9 @@
         <tbody>
           {% for item in object_list %}
           <tr align="center">
-            <td>{{item.name}}</td>
-            <td>{{item.brand}}</td>
-            <td>{{item.category}}</td>
+            <td class="table-width-fix-large">{{item.name}}</td>
+            <td class="table-width-fix-large">{{item.brand}}</td>
+            <td class="table-width-fix-small">{{item.category}}</td>
             <td>{{item.price}}</td>
             <td>{{item.regist_date | date:"Y/m/d" }}</td>
             <td><a href="{% url 'favoritebeauty:list_review' myitem_id=item.pk %}">{{item.rating|floatformat}}</a></td>
