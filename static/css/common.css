@@ -34,7 +34,7 @@ a {
 }
 
 .btn {
-  width: 120px;
+  width: 200px;
   padding: 7px;
   box-sizing: border-box;
   text-align: center;
@@ -44,6 +44,20 @@ a {
   font-weight: 700;
   cursor: pointer;
   padding-top: 1;
+}
+
+.navbar-btn {
+  width: 150px;
+  padding: 5px;
+  box-sizing: border-box;
+  font-weight: 700;
+  font-size: 14px;
+  text-align: center;
+  color: var(--dark);
+  background-color: #fff;
+  border: 2px solid #fff;
+  border-radius: 0;
+  cursor: pointer;
 }
 
 .table-width-fix-large {
