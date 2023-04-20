@@ -1,6 +1,7 @@
 import logging
 
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.http import Http404
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, ListView, FormView, UpdateView, DetailView
@@ -8,6 +9,8 @@ from django.views.generic.base import TemplateView
 
 from .forms import RegistMyitemForm, ModifyMyitemForm, ReviewMyitemForm
 from .models import MyItems, Reviews
+
+from custom_modules.module import check_userid
 
 
 logger = logging.getLogger('file')
@@ -48,10 +51,19 @@ class RegistMyitemView(LoginRequiredMixin, CreateView):
 
 
 class ModifyMyitemView(LoginRequiredMixin, UpdateView):
+    
     template_name = 'favoritebeauty/modify_myitem.html'
     form_class = ModifyMyitemForm
     model = MyItems
     success_url = reverse_lazy('favoritebeauty:home')
+
+    def get_context_data(self, **kwargs):
+        myitem_obj = get_object_or_404(MyItems, pk=self.kwargs['pk'])
+        logger.info(f'review_obj.myitem.id: {myitem_obj.user.id}')
+        check_result = check_userid(self.request, myitem_obj.user.id)
+        if not check_result:
+            raise Http404()
+        return super().get_context_data(**kwargs)        
 
 
 class ReviewMyitemView(LoginRequiredMixin, FormView):
