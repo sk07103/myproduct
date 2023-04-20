@@ -27,6 +27,10 @@ a {
   text-decoration: none;
 }
 
+table a {
+  text-decoration: underline;
+}
+
 .navbar .nav-link {
   color: #fff !important;
   font-size: 14px;
