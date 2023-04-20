@@ -21,8 +21,8 @@
           {% for review in object_list %}
           <tr align="center">
             <td class="table-width-fix-small">{{review.review_date | date:"Y/m/d"}}</td>
-            <td class="table-width-fix-small">{{review.review}}</td>
-            <td><a href="{% url 'favoritebeauty:detail_review' pk=review.pk %}">{{review.comment|truncatechars:70}}</a>
+	    <td class="table-width-fix-small"><a href="{% url 'favoritebeauty:detail_review' pk=review.pk %}">{{review.review}}</a></td>
+	    <td>{{review.comment|truncatechars:70}}</td>
             </td>
           </tr>
           {% endfor %}
