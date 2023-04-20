@@ -66,7 +66,7 @@
         <tbody>
           {% for item in object_list %}
           <tr align="center">
-            <td class="table-width-fix-large">{{item.name}}</td>
+            <td class="table-width-fix-large"><a href="{% url 'favoritebeauty:modify_myitem' pk=item.pk %}">{{item.name}}</a></td>
             <td class="table-width-fix-large">{{item.brand}}</td>
             <td class="table-width-fix-small">{{item.category}}</td>
             <td>{{item.price}}</td>

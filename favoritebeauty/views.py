@@ -6,7 +6,7 @@ from django.urls import reverse_lazy
 from django.views.generic import CreateView, ListView, FormView, UpdateView, DetailView
 from django.views.generic.base import TemplateView
 
-from .forms import RegistMyitemForm, ReviewMyitemForm
+from .forms import RegistMyitemForm, ModifyMyitemForm, ReviewMyitemForm
 from .models import MyItems, Reviews
 
 
@@ -45,6 +45,13 @@ class RegistMyitemView(LoginRequiredMixin, CreateView):
         data.user = self.request.user
         data.save()
         return super().form_valid(form)
+
+
+class ModifyMyitemView(LoginRequiredMixin, UpdateView):
+    template_name = 'favoritebeauty/modify_myitem.html'
+    form_class = ModifyMyitemForm
+    model = MyItems
+    success_url = reverse_lazy('favoritebeauty:home')
 
 
 class ReviewMyitemView(LoginRequiredMixin, FormView):

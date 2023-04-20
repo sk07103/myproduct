@@ -20,6 +20,20 @@ class RegistMyitemForm(forms.ModelForm):
         }
 
 
+class ModifyMyitemForm(forms.ModelForm):
+
+    class Meta:
+        model = MyItems
+        fields = ['category', 'brand', 'name', 'price', 'tried']
+        labels = {
+            'category': 'カテゴリー',
+            'brand': 'ブランド',
+            'name': 'アイテム名',
+            'price': '価格',
+            'tried': 'お試し済み'
+        }
+
+
 class ReviewMyitemForm(forms.ModelForm):
 
     review = forms.ChoiceField(

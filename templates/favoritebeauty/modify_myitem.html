@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block additional_head %}
+{% load static %}
+<link href="{% static 'css/favoritebeauty/modify_myitem.css' %}" rel="stylesheet" type="text/css">
+{% endblock %}
+
+{% block title %}Myアイテム情報変更 | FavoriteBeauty{% endblock title %}
+
+{% block body %}
+<div class="container">
+  <div class="row">
+    <div class="col-lg-10 mx-auto my-4">
+      <h2>アイテム情報変更</h2>
+      <form class="mt-4 ms-5" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <table>
+          {{ form.as_table }}
+        </table>
+        <input type="submit" class="btn btn-outline-dark mt-3 ms-3" value="変更">
+        <a href="{% url 'favoritebeauty:home' %}"
+          class="btn btn-outline-dark mt-3 ms-3">戻る</a>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}
