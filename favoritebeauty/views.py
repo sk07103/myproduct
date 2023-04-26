@@ -10,8 +10,6 @@ from django.views.generic.base import TemplateView
 from .forms import RegistMyitemForm, ModifyMyitemForm, ReviewMyitemForm
 from .models import MyItems, Reviews
 
-from custom_modules.module import check_userid
-
 
 logger = logging.getLogger('file')
 
@@ -51,7 +49,7 @@ class RegistMyitemView(LoginRequiredMixin, CreateView):
 
 
 class ModifyMyitemView(LoginRequiredMixin, UpdateView):
-    
+
     template_name = 'favoritebeauty/modify_myitem.html'
     form_class = ModifyMyitemForm
     model = MyItems
@@ -59,11 +57,9 @@ class ModifyMyitemView(LoginRequiredMixin, UpdateView):
 
     def get_context_data(self, **kwargs):
         myitem_obj = get_object_or_404(MyItems, pk=self.kwargs['pk'])
-        logger.info(f'review_obj.myitem.id: {myitem_obj.user.id}')
-        check_result = check_userid(self.request, myitem_obj.user.id)
-        if not check_result:
+        if myitem_obj.user.id != self.request.user.pk:
             raise Http404()
-        return super().get_context_data(**kwargs)        
+        return super().get_context_data(**kwargs)
 
 
 class ReviewMyitemView(LoginRequiredMixin, FormView):

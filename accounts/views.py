@@ -10,8 +10,6 @@ from django.views.generic import CreateView, DetailView, UpdateView
 from .forms import RegistUserForm, LoginUserForm, UpdateUserForm
 from .models import User
 
-from custom_modules.module import check_userid
-
 
 logger = logging.getLogger('file')
 
@@ -50,8 +48,7 @@ class UpdateUserView(LoginRequiredMixin, UpdateView):
 
     # 変更するユーザーがログイン中のユーザーであることをチェック
     def get_context_data(self, **kwargs):
-        check_result = check_userid(self.request, self.request.user.id)
-        if not check_result:
+        if self.request.user.pk != self.kwargs['pk']:
             raise Http404()
         return super().get_context_data(**kwargs)
 
