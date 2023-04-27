@@ -10,7 +10,7 @@ class MyItems(models.Model):
     brand = models.ForeignKey('brands', on_delete=models.PROTECT)
     price = models.IntegerField()
     rating = models.FloatField(default=0)
-    regist_date = models.DateField(auto_now=True)
+    regist_date = models.DateField(auto_now_add=True)
     tried = models.BooleanField(default=False)
 
     class Meta:
