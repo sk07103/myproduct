@@ -67,7 +67,6 @@ class ReviewMyitemView(LoginRequiredMixin, FormView):
 
     template_name = 'favoritebeauty/review_myitem.html'
     form_class = ReviewMyitemForm
-    success_url = reverse_lazy('favoritebeauty:home')
     model = Reviews
 
     def get_context_data(self, **kwargs):
@@ -108,6 +107,9 @@ class ReviewMyitemView(LoginRequiredMixin, FormView):
         myitem_obj.save()
 
         return super().form_valid(form)
+
+    def get_success_url(self):
+        return reverse_lazy('favoritebeauty:list_review', kwargs={'myitem_id': self.kwargs['myitem_id']})
 
 
 class ListTriedMyitemView(LoginRequiredMixin, ListView):
