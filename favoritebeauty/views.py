@@ -55,6 +55,7 @@ class ModifyMyitemView(LoginRequiredMixin, UpdateView):
     model = MyItems
     success_url = reverse_lazy('favoritebeauty:home')
 
+    # myitemの所有者とログイン中のユーザーが一致しているかをチェック
     def get_context_data(self, **kwargs):
         myitem_obj = get_object_or_404(MyItems, pk=self.kwargs['pk'])
         if myitem_obj.user.id != self.request.user.pk:
@@ -70,11 +71,15 @@ class ReviewMyitemView(LoginRequiredMixin, FormView):
     model = Reviews
 
     def get_context_data(self, **kwargs):
+
+        # myitemの所有者とログイン中のユーザーが一致しているかをチェック
+        myitem_obj = get_object_or_404(MyItems, pk=self.kwargs['myitem_id'])
+        if myitem_obj.user.id != self.request.user.pk:
+            raise Http404()
+        
+        # テンプレートにmyitemとreview_dateを渡す
         context = super().get_context_data()
-        logger.info(self.kwargs['myitem_id'])
-        logger.info(self.kwargs['review_date'])
-        context['myitem'] = get_object_or_404(
-            MyItems, pk=self.kwargs['myitem_id'])
+        context['myitem'] = myitem_obj
         review_date = self.kwargs['review_date']
         context['review_date'] = review_date.replace("-", "/")
         return context
@@ -127,10 +132,17 @@ class ListReviewView(LoginRequiredMixin, ListView):
     model = Reviews
 
     def get_context_data(self, **kwargs):
+
+        # myitemの所有者とログイン中のユーザーが一致しているかをチェック
+        myitem_obj = get_object_or_404(MyItems, pk=self.kwargs['myitem_id'])
+        if myitem_obj.user.id != self.request.user.pk:
+            raise Http404()
+
+        # テンプレートにmyitemを渡す
         context = super().get_context_data()
-        context['myitem'] = get_object_or_404(
-            MyItems, pk=self.kwargs['myitem_id'])
+        context['myitem'] = myitem_obj
         return context
+
 
     def get_queryset(self, **kwargs):
         queryset = super().get_queryset(**kwargs)
@@ -149,7 +161,14 @@ class DetailReviewView(LoginRequiredMixin, UpdateView):
         return reverse_lazy('favoritebeauty:list_review', kwargs={'myitem_id': review.myitem_id})
 
     def get_context_data(self, **kwargs):
+
+        # myitemの所有者とログイン中のユーザーが一致しているかをチェック
+        review_obj = get_object_or_404(Reviews, pk=self.kwargs['pk'])
+        myitem_obj = get_object_or_404(MyItems, pk=review_obj.myitem.id)
+        if myitem_obj.user.id != self.request.user.pk:
+            raise Http404()
+        
+        # テンプレートにreviewを渡す
         context = super().get_context_data(**kwargs)
-        context['review'] = get_object_or_404(
-            Reviews, pk=self.kwargs['pk'])
+        context['review'] = get_object_or_404(Reviews, pk=self.kwargs['pk'])
         return context
