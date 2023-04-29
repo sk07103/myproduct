@@ -10,7 +10,6 @@ from django.views.generic.base import TemplateView
 from .forms import RegistMyitemForm, ModifyMyitemForm, ReviewMyitemForm
 from .models import MyItems, Reviews
 
-
 logger = logging.getLogger('file')
 
 
@@ -40,8 +39,9 @@ class RegistMyitemView(LoginRequiredMixin, CreateView):
     form_class = RegistMyitemForm
     success_url = reverse_lazy('favoritebeauty:home')
 
-    # formから受け取ったデータにログインユーザーの情報を加えてDBに保存
     def form_valid(self, form):
+
+        # formから受け取ったデータにログインユーザーの情報を加えてDBに保存
         data = form.save(commit=False)
         data.user = self.request.user
         data.save()
@@ -55,8 +55,9 @@ class ModifyMyitemView(LoginRequiredMixin, UpdateView):
     model = MyItems
     success_url = reverse_lazy('favoritebeauty:home')
 
-    # myitemの所有者とログイン中のユーザーが一致しているかをチェック
     def get_context_data(self, **kwargs):
+    
+        # myitemの所有者とログイン中のユーザーが一致しているかをチェック
         myitem_obj = get_object_or_404(MyItems, pk=self.kwargs['pk'])
         if myitem_obj.user.id != self.request.user.pk:
             raise Http404()
@@ -75,7 +76,7 @@ class ReviewMyitemView(LoginRequiredMixin, FormView):
         myitem_obj = get_object_or_404(MyItems, pk=self.kwargs['myitem_id'])
         if myitem_obj.user.id != self.request.user.pk:
             raise Http404()
-        
+
         # テンプレートにmyitemとreview_dateを渡す
         context = super().get_context_data()
         context['myitem'] = myitem_obj
@@ -169,7 +170,7 @@ class DetailReviewView(LoginRequiredMixin, UpdateView):
         myitem_obj = get_object_or_404(MyItems, pk=review_obj.myitem.id)
         if myitem_obj.user.id != self.request.user.pk:
             raise Http404()
-        
+
         # テンプレートにreviewを渡す
         context = super().get_context_data(**kwargs)
         context['review'] = get_object_or_404(Reviews, pk=self.kwargs['pk'])
