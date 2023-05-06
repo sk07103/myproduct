@@ -36,10 +36,8 @@ class ModifyMyitemForm(forms.ModelForm):
 
 class ReviewMyitemForm(forms.ModelForm):
 
-    review = forms.ChoiceField(
-        label='肌の状態', choices=Reviews.REVIEW_CHOICES, widget=forms.RadioSelect())
-    comment = forms.CharField(label='コメント（任意）', widget=forms.Textarea(
-        attrs={'rows': 5, 'cols': 60}), required=False)
+    review = forms.ChoiceField(label='肌の状態', choices=Reviews.REVIEW_CHOICES, widget=forms.RadioSelect())
+    comment = forms.CharField(label='コメント（任意）', widget=forms.Textarea(attrs={'rows': 5, 'cols': 60}), required=False)
 
     class Meta:
         model = Reviews
