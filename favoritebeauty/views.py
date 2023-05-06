@@ -1,5 +1,6 @@
 import logging
 
+from datetime import date
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import Http404
 from django.shortcuts import render, get_object_or_404
@@ -25,6 +26,7 @@ class HomeView(LoginRequiredMixin, ListView):
     def get_context_data(self):
         context = super().get_context_data()
         context['user'] = self.request.user
+        context['today'] = date.today()
         return context
 
     def get_queryset(self, **kwargs):
