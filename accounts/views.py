@@ -38,7 +38,7 @@ class UpdateUserView(LoginRequiredMixin, UpdateView):
     form_class = UpdateUserForm
 
     def get_success_url(self):
-        return reverse_lazy('accounts:detail_user', kwargs={'pk': self.kwargs['pk']})
+        return reverse_lazy('favoritebeauty:home')
 
     # 変更するユーザーがログイン中のユーザーであることをチェック
     def get_context_data(self, **kwargs):
