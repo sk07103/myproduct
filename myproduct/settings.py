@@ -53,6 +53,10 @@ LOGIN_URL = '/accounts/login_user'
 LOGIN_REDIRECT_URL = '/favoritebeauty/home'
 LOGOUT_REDIRECT_URL = '/favoritebeauty/top'
 
+# Session settings
+SESSION_COOKIE_AGE = 1800
+SESSION_SAVE_EVERY_REQUEST = True
+
 # Static settings (CSS, JavaScript, Images)
 STATIC_URL = '/static/'
 STATIC_DIR = BASE_DIR / 'static'
